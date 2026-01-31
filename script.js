@@ -1,15 +1,14 @@
- // DOM elements
 const addBtn = document.getElementById("addBtn");
 const clearBtn = document.getElementById("clearBtn");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 
-// Event listeners
+
 addBtn.addEventListener("click", addTask);
 clearBtn.addEventListener("click", clearAllTasks);
 window.addEventListener("load", loadTasks);
 
-// Add new task
+
 function addTask() {
   const taskText = taskInput.value.trim();
 
@@ -24,7 +23,7 @@ function addTask() {
   taskInput.value = "";
 }
 
-// Create task element
+
 function createTask(text, completed) {
   const li = document.createElement("li");
 
@@ -32,7 +31,7 @@ function createTask(text, completed) {
     li.classList.add("completed");
   }
 
-  // Left side (checkbox + text)
+  
   const leftDiv = document.createElement("div");
   leftDiv.className = "task-left";
 
@@ -46,7 +45,7 @@ function createTask(text, completed) {
   leftDiv.appendChild(checkbox);
   leftDiv.appendChild(span);
 
-  // Right side (buttons)
+   
   const btnDiv = document.createElement("div");
   btnDiv.className = "task-buttons";
 
@@ -61,12 +60,12 @@ function createTask(text, completed) {
   btnDiv.appendChild(editBtn);
   btnDiv.appendChild(deleteBtn);
 
-  // Add everything to li
+   
   li.appendChild(leftDiv);
   li.appendChild(btnDiv);
   taskList.appendChild(li);
 
-  // Events
+ 
   checkbox.addEventListener("change", () => {
     li.classList.toggle("completed");
     saveTasks();
@@ -86,7 +85,7 @@ function createTask(text, completed) {
   });
 }
 
-// Save tasks to localStorage
+ 
 function saveTasks() {
   const tasks = [];
 
@@ -100,7 +99,7 @@ function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// Load tasks from localStorage
+ 
 function loadTasks() {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -109,8 +108,9 @@ function loadTasks() {
   });
 }
 
-// Clear all tasks
+ 
 function clearAllTasks() {
   taskList.innerHTML = "";
   localStorage.removeItem("tasks");
 }
+
