@@ -13,7 +13,7 @@ function addTask() {
   const taskText = taskInput.value.trim();
 
   if (taskText === "") {
-    alert("Task enter pannunga");
+    alert("enter the task");
     return;
   }
 
@@ -113,4 +113,5 @@ function clearAllTasks() {
   taskList.innerHTML = "";
   localStorage.removeItem("tasks");
 }
+
 
